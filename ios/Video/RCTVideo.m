@@ -375,7 +375,11 @@ static int const RCTVideoUnset = -1;
       [self addPlayerItemObservers];
       [self setFilter:_filterName];
       [self setMaxBitRate:_maxBitRate];
-      
+
+      _player.automaticallyWaitsToMinimizeStalling=NO;
+      _playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = YES;
+
+
       [_player pause];
         
       if (_playbackRateObserverRegistered) {
@@ -905,8 +909,8 @@ static int const RCTVideoUnset = -1;
     } else if([_ignoreSilentSwitch isEqualToString:@"obey"]) {
       [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
     }
-    [_player play];
-    [_player setRate:_rate];
+
+    [_player playImmediatelyAtRate:_rate];
   }
   
   _paused = paused;
