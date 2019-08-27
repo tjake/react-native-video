@@ -40,6 +40,7 @@
     "dependencies": {
         "keymirror": "^0.1.1",
         "prop-types": "^15.5.10",
+        "react-native-pod": "^1.11.0",
         "shaka-player": "^2.4.4"
     },
     "scripts": {

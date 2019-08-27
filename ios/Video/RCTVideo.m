@@ -573,17 +573,17 @@ static int const RCTVideoUnset = -1;
                 }
         }
 
-        DVURLAsset *asset = [[DVURLAsset alloc] initWithURL:url options:options networkTimeout:10000];
-        asset.loaderDelegate = self;
+        //DVURLAsset *asset = [[DVURLAsset alloc] initWithURL:url options:options networkTimeout:10000];
+        //asset.loaderDelegate = self;
         
-        /* More granular code to have control over the DVURLAsset
+        /* More granular code to have control over the DVURLAsset */
         DVAssetLoaderDelegate *resourceLoaderDelegate = [[DVAssetLoaderDelegate alloc] initWithURL:url];
         resourceLoaderDelegate.delegate = self;
         NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
         components.scheme = [DVAssetLoaderDelegate scheme];
         AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[components URL] options:options];
         [asset.resourceLoader setDelegate:resourceLoaderDelegate queue:dispatch_get_main_queue()];
-        */
+        
 
         handler([AVPlayerItem playerItemWithAsset:asset]);
     }];
